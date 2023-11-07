@@ -3,8 +3,6 @@ package org.codenotknock.test;
 import org.codenotknock.domain.Diner;
 import org.codenotknock.proxy.CglibProxy;
 
-import java.util.List;
-
 public class CglibProxyTest {
   public static void main(String [] args){
         // 目标对象
