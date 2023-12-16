@@ -54,13 +54,13 @@ public class StreamDemo1 {
         User user1 = new User("John Doe", 30, Arrays.asList(book1, book2));
         user1.setOccupation("Engineer");
         User user2 = new User("Alice Smith", 25, Arrays.asList(book3));
-        user1.setOccupation("Designer");
+        user2.setOccupation("Designer");
         User user3 = new User("Bob Johnson", 35, Arrays.asList(book4, book5));
-        user1.setOccupation("Analyst");
+        user3.setOccupation("Analyst");
         User user4 = new User("Emily Brown", 28, Arrays.asList(book1));
-        user1.setOccupation("Manager");
+        user4.setOccupation("Analyst");
         User user5 = new User("David Wilson", 32, Arrays.asList(book2, book3, book4));
-        user1.setOccupation("Programmer");
+        user5.setOccupation("Programmer");
 
         // 添加到用户列表中
         users.add(user1);
