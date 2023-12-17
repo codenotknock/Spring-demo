@@ -19,4 +19,12 @@ public class LoginController {
         // 登录
         return loginService.login(user);
     }
+
+
+    @PostMapping("/user/logOut")
+    public ResponseResult logOut() {
+        // 登录
+        return loginService.logOut();
+    }
+
 }

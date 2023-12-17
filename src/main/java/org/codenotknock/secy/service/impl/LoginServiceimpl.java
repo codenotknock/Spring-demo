@@ -10,6 +10,7 @@ import org.springframework.data.redis.cache.RedisCache;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -48,5 +49,19 @@ public class LoginServiceimpl implements LoginService {
         map.put("token", jwt_token);
         redisCache.put("login"+id, loginUser);
         return ResponseResult.success("登录成功");
+    }
+
+    @Override
+    public ResponseResult logOut() {
+        // 获取 SecurityHolder 中的用户 id
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+        Long id = loginUser.getUser().getId();
+
+        // 删除 redis 缓存
+        redisCache.evict("login"+id);
+
+
+        return ResponseResult.success("退出成功");
     }
 }
