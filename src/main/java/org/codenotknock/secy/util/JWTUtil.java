@@ -33,14 +33,14 @@ public class JWTUtil {
     //这两个二者选一即可
     //我建议使用@Data和@ConfigurationProperties结合
     //@Value("${jwt.data.SECRET}")
-    private String SECRET;//创建加密盐
+    private static String SECRET;//创建加密盐
 
     //过期时间
-    private Long expiration;
+    private static Long expiration;
 
     //根据用户名生成token
     //传入的是使用SpringSecurity里的UserDetails
-    public String createToken(UserDetails userDetails) {
+    public static String createToken(UserDetails userDetails) {
         HashMap<String, Object> claims = new HashMap<>();
         claims.put(CLAIM_KEY_USERNAME, userDetails.getUsername());
         claims.put(CLAIM_KEY_CREATED, new Date());
@@ -48,7 +48,7 @@ public class JWTUtil {
     }
 
     //根据token获取用户名
-    public String getUsernameFromToken(String token) {
+    public static String getUsernameFromToken(String token) {
         String username = "";
         try {
             Claims claims = getClaimsFromToken(token);
@@ -61,7 +61,7 @@ public class JWTUtil {
     }
 
     //从token中获取荷载
-    private Claims getClaimsFromToken(String token) {
+    public static Claims getClaimsFromToken(String token) {
         Claims claims = null;
         try {
             claims = Jwts.parser()
@@ -84,7 +84,7 @@ public class JWTUtil {
 
 
     //根据负载生成jwt token
-    private String createToken(Map<String, Object> claims) {
+    private static String createToken(Map<String, Object> claims) {
         //jjwt构建jwt builder
         //设置信息，过期时间，signnature
         return Jwts.builder()
@@ -95,14 +95,14 @@ public class JWTUtil {
     }
 
     //生成token失效时间
-    private Date expirationDate() {
+    private static Date expirationDate() {
         //失效时间为：系统当前毫秒数+我们设置的时间（s）*1000=》毫秒
         //其实就是未来7天
         return new Date(System.currentTimeMillis() + expiration * 1000);
     }
 
     //判断token是否有效
-    public boolean validateToken(String token, UserDetails userDetails) {
+    public static boolean validateToken(String token, UserDetails userDetails) {
         //判断token是否过期
         //判断token是否和userDetails中的一致
         //我们要做的 是先获取用户名
@@ -112,13 +112,13 @@ public class JWTUtil {
 
     //判断token、是否失效
     //失效返回true
-    private boolean isTokenExpired(String token) {
+    private static boolean isTokenExpired(String token) {
         Date expiredDate = getExpiredDateFeomToken(token);
         return expiredDate.before(new Date());
     }
 
     //从荷载中获取时间
-    private Date getExpiredDateFeomToken(String token) {
+    private static Date getExpiredDateFeomToken(String token) {
         Claims claims = getClaimsFromToken(token);
         return claims.getExpiration();
     }
