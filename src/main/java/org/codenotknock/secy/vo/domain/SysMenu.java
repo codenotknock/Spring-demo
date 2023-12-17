@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 用户表
+ * 菜单表
  * </p>
  *
  * @author xiaofu
@@ -20,86 +20,66 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("sys_user")
-public class SysUser implements Serializable {
+@TableName("sys_menu")
+public class SysMenu implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 主键
-     */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
-     * 用户名
+     * 菜单名
      */
-    private String userName;
+    private String menuName;
 
     /**
-     * 昵称
+     * 路由地址
      */
-    private String nickName;
+    private String path;
 
     /**
-     * 密码
+     * 组件路径
      */
-    private String password;
+    private String component;
 
     /**
-     * 账号状态（0正常 1停用）
+     * 菜单状态（0显示 1隐藏）
+     */
+    private String visible;
+
+    /**
+     * 菜单状态（0正常 1停用）
      */
     private String status;
 
     /**
-     * 邮箱
+     * 权限标识
      */
-    private String email;
+    private String perms;
 
     /**
-     * 手机号
+     * 菜单图标
      */
-    private String phonenumber;
+    private String icon;
 
-    /**
-     * 用户性别（0男，1女，2未知）
-     */
-    private String sex;
-
-    /**
-     * 头像
-     */
-    private String avatar;
-
-    /**
-     * 用户类型（0管理员，1普通用户）
-     */
-    private String userType;
-
-    /**
-     * 创建人的用户id
-     */
     private Long createBy;
 
-    /**
-     * 创建时间
-     */
     private LocalDateTime createTime;
 
-    /**
-     * 更新人
-     */
     private Long updateBy;
 
-    /**
-     * 更新时间
-     */
     private LocalDateTime updateTime;
 
     /**
-     * 删除标志（0代表未删除，1代表已删除）
+     * 是否删除（0未删除 1已删除）
      */
     private Integer delFlag;
+
+    /**
+     * 备注
+     */
+    private String remark;
 
 
 }
