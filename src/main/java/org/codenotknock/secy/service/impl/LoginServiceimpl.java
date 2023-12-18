@@ -3,10 +3,10 @@ package org.codenotknock.secy.service.impl;
 import org.codenotknock.secy.ResponseResult;
 import org.codenotknock.secy.service.LoginService;
 import org.codenotknock.secy.util.JWTUtil;
+import org.codenotknock.secy.util.RedisCache;
 import org.codenotknock.secy.vo.domain.LoginUser;
 import org.codenotknock.secy.vo.domain.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.cache.RedisCache;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -28,7 +28,7 @@ public class LoginServiceimpl implements LoginService {
     @Override
     public ResponseResult login(SysUser user) {
         // AuthenticationManager 的 authenticate 方法进行用户认证
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword());
         Authentication authenticate = authenticationManager.authenticate(authenticationToken);
         /*  authenticationManager.authenticate(authenticationToken);
         最终会调用到 UserDetailsService 中的方法
@@ -47,7 +47,7 @@ public class LoginServiceimpl implements LoginService {
         // 把用户信息存入redis
         HashMap<String, String> map = new HashMap<>();
         map.put("token", jwt_token);
-        redisCache.put("login"+id, loginUser);
+//        redisCache.put("login"+id, loginUser);
         return ResponseResult.success("登录成功");
     }
 
@@ -59,7 +59,7 @@ public class LoginServiceimpl implements LoginService {
         Long id = loginUser.getUser().getId();
 
         // 删除 redis 缓存
-        redisCache.evict("login"+id);
+//        redisCache.evict("login"+id);
 
 
         return ResponseResult.success("退出成功");

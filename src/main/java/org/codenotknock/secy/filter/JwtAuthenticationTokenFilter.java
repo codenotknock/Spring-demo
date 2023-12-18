@@ -3,9 +3,9 @@ package org.codenotknock.secy.filter;
 import com.mysql.cj.util.StringUtils;
 import io.jsonwebtoken.Claims;
 import org.codenotknock.secy.util.JWTUtil;
+import org.codenotknock.secy.util.RedisCache;
 import org.codenotknock.secy.vo.domain.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.cache.RedisCache;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -50,7 +50,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
         // 从 redis 中获取用户信息
         String redisKey = "login" + id;
-        LoginUser loginUser = redisCache.get(redisKey, LoginUser.class);
+        LoginUser loginUser = redisCache.getCacheObject(redisKey);
         if (null == loginUser) {
             throw new RuntimeException("用户未登录");
         }

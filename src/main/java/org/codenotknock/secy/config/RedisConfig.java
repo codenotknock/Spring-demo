@@ -18,8 +18,6 @@ import java.time.Duration;
  * com.avatar.redis
  * Description: 设置redis配置
  *
- * @author jack
- * @date 2020/11/22 14:36
  */
 @Configuration
 public class RedisConfig {
