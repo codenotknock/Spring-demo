@@ -1,7 +1,0 @@
-server:
-  port: 9999
-
-logging:
-  level:
-    org.codenotknock: DEBUG
-    org.springframework: DEBUG
