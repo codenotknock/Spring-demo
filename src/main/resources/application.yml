@@ -1,7 +1,45 @@
-server:
-  port: 9999
 
 logging:
   level:
-    org.codenotknock: DEBUG
-    org.springframework: DEBUG
+    org:
+      codenotknock: DEBUG
+
+
+# 日期
+date: 1985/1/1
+# 对象
+student:
+  firstName: fu
+  name: xiaofu
+  age: 21
+
+# 单行写法
+student2: {first-name: fu, name: xiaofu, age: 21 }
+
+# 数组
+animal:
+  - dog
+  - cat
+  - bride
+aniimal2: {dog, cat, bride}
+
+# list集合
+my-list:
+  - xiao
+  - fu
+  - xue
+  - Java
+myList2: {xiao, fu, xue, Java}
+
+students:
+  - name: xiaofu
+    age: 21
+  - name: xiaomi
+    age: 22
+  - {name: xiaofu2, age: 21}
+
+# 占位符赋值${key:defaultValue} 如果 myPort 无值，port 默认为 8080
+server:
+  port: ${myPort:8080}
+
+myPort: 9999
