@@ -1,7 +1,9 @@
 server:
   port: 9999
 
-
+logging:
+  level:
+    org.springframework: DEBUG
 
 # sql
 spring:
