@@ -45,9 +45,13 @@ server:
 myPort: 9999
 
 
-# spring整合mybatis
-# 数据库相关配置
+# 自定义静态资源访问路径  静态资源url前必须有/res才能访问到static目录中的文件
 spring:
+  mvc:
+    static-path-pattern: /res/**
+
+    # spring整合mybatis
+    # 数据库相关配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/mySchemeTest?characterEncoding=utf-8&&serverTimezone=Asia\Shanghai
