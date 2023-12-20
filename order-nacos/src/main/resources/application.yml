@@ -1,0 +1,17 @@
+server:
+  port: 10000
+
+# 应用名称 nacos会将应用名称当作服务名称
+spring:
+  application:
+    name: order-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: nacos   # 登录 nacos 的用户名 默认也是 nacos
+        password: nacos   # 登录 nacos 的密码 默认也是 nacos
+        namespace: dev    # 命名空间 默认是 public   隔离不同的服务示例 比如dev、uat、prod 不同的环境
+
+
+

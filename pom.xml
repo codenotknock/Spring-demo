@@ -18,12 +18,14 @@
     <modules>
         <module>order</module>
         <module>stock</module>
+        <module>order-nacos</module>
+        <module>stock-nacos</module>
     </modules>
     <!--    父 maven 项目，用来聚合子模块。没有src代码部分，不需被打成 jar 或 war 包-->
     <properties>
         <java.version>1.8</java.version>
 <!--        统一管理版本信息-->
-        <spring-cloud-alibaba>2.2.1.RELEASE</spring-cloud-alibaba>
+        <spring-cloud-alibaba>2021.0.4.0</spring-cloud-alibaba>
         <spring-boot-starter-parent>2.7.12</spring-boot-starter-parent>
         <spring-cloud-dependencies>2021.0.7</spring-cloud-dependencies>
     </properties>
