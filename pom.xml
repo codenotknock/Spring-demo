@@ -36,6 +36,42 @@
 <!--           <optional> true </optional>  若有子项目继承时，不传递该依赖 -->
             <optional> true </optional>
         </dependency>
+
+<!--        热部署-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional> true </optional>
+        </dependency>
+
+<!--        Spring Boot 2.2.0 版本开始引入 JUnit 5  单元测试-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+<!--        springboot 2.4 以上版本的 spring-boot-starter-test
+       移除了默认对 Vintage 的依赖。如果项目进行更新且需要兼容老版本的junit3、junit4 单元测试时，需要在添加 Vintage 依赖-->
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+<!--        整合 mybatis ：mybatis 启动器、mysql驱动-->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "student2")
 public class Student {
-    private String firstNaem;
+    private String firstName;
     private String name;
     private Integer age;
 }
