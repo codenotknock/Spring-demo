@@ -1,6 +1,6 @@
 package org.codenotknock.stock;
 
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/stock")
 public class StockController {
 
-    @PostMapping("/reduct")
-    public String reduct() {
+    @GetMapping("/reduce")
+    public String reduce() {
         System.out.println("库存减少！");
         return "库存减少！";
     }
