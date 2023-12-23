@@ -20,6 +20,8 @@
         <module>stock</module>
         <module>order-nacos</module>
         <module>stock-nacos</module>
+        <module>order-ribbon</module>
+        <module>order-loadbalancer</module>
     </modules>
     <!--    父 maven 项目，用来聚合子模块。没有src代码部分，不需被打成 jar 或 war 包-->
     <properties>
