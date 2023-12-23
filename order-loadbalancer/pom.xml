@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.codenotknock</groupId>
+        <artifactId>SpringDemo</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>order-loadbalancer</artifactId>
+    <packaging>jar</packaging>
+    <name>order-loadbalancer</name>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--        nacos-服务注册发现 依赖   不加版本号 idea 不加载 奇怪？？？-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <version>2021.0.4.0</version>
+        </dependency>
+
+<!--        nacos 2021 及之后的版本已经移除了Ribbon支持，如果需要实现负载均衡，
+            官方推荐替代方案是采用Spring Cloud LoadBalancer，-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+             <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <finalName>order-loadbalancer</finalName>
+    </build>
+</project>

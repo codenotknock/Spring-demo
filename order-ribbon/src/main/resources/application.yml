@@ -1,0 +1,35 @@
+server:
+  port: 10000
+
+# 应用名称 nacos会将应用名称当作服务名称
+spring:
+  application:
+    name: order-ribbon
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false  # 关闭Ribbon启用Spring-Cloud-LoadBalancer
+    nacos:
+      server-addr: 127.0.0.1:8848
+      discovery:
+        username: nacos   # 登录 nacos 的用户名 默认也是 nacos
+        password: nacos   # 登录 nacos 的密码 默认也是 nacos
+        namespace: dev    # 命名空间 默认是 public   隔离不同的服务示例 比如dev、uat、prod 不同的环境
+        ephemeral: false  # 是否为临时示例   true: 临时实例   false：永久实例 即使服务挂掉依然存在
+
+#stock-service:
+#  ribbon:
+## 指定使用Nacos提供的负载均衡策略（优先调用同一集群的实例，基于随机&权重）
+#    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.RandomRule
+
+
+
+stock-service:
+  ribbon:
+    # 指定自定义的负载均衡器 ： 随机一个实例
+    NFLoadBalancerRuleClassName: org.codenotknock.order.ribbon.rule.CustomRule
+ribbon:
+  eager-load:
+    clients: stock-service, stock-service1
+    # 该服务实例是否开启饥饿加载,多个实例用逗号隔开
+    enabled: true
