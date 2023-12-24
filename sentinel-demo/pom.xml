@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.codenotknock</groupId>
+        <artifactId>SpringDemo</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>sentinel-demo</artifactId>
+    <packaging>jar</packaging>
+    <name>sentinel-demo</name>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+<!--        sentinel 核心库-->
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-core</artifactId>
+            <version>1.8.6</version>
+        </dependency>
+
+<!--        使用@SentinelResource 注解的依赖库-->
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-annotation-aspectj</artifactId>
+            <version>1.7.1</version>
+        </dependency>
+
+<!--        整合 sentinel 控制台 管理页面-->
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-transport-simple-http</artifactId>
+            <version>1.7.1</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <finalName>sentinel-demo</finalName>
+    </build>
+</project>
