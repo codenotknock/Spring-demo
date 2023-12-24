@@ -1,0 +1,25 @@
+server:
+  port: 9999
+
+spring:
+  application:
+    name: order-sentinel
+  cloud:
+    nacos:
+      discovery:
+        server-addr: : 127.0.0.1:8848
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080
+      datasource:
+        flow-rule:
+          nacos:
+            server-addr: 127.0.0.1:8847
+            username: nacos
+            password: nacos
+            data-id: order-sentinel-flow-rule
+            rule-type: flow
+
+  main:
+    #    解决升级Spring Boot2.6后,因依赖循环引用导致启动时报错的问题
+    allow-circular-references: true
