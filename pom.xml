@@ -91,7 +91,29 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
+
+<!--        指标监控  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!--    图形化界面 SpringBoot Admin ：服务端-->
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-server</artifactId>
+            <version>3.1.1</version>
+        </dependency>
+        <!--    配置 SpringBoot Admin client 【需要被监控的应用】：客户端-->
+<!--        这里写在一起 是错的-->
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>3.1.1</version>
+        </dependency>
+
     </dependencies>
+
+
 
     <build>
         <plugins>

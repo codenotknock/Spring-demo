@@ -69,10 +69,22 @@ spring:
   redis:
     port: 6379
     host: 127.0.0.1
+  profiles:
+    active: dev, mysql  # 指定配置
+  boot:
+    admin:
+      client:
+        url: http://localhost:9999
 
 # mybatis 相关配置
 mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml  # mapper 映射文件路径
   type-aliases-package: com.codenotknock.domain # 配置包下的类有默认别名
 
-
+# 监控配置
+management:
+  endpoints:
+    enabled-by-default: true  # 启用所有端点
+    web:
+      exposure:
+        include: "*"  # 暴露所有端点
