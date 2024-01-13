@@ -1,0 +1,17 @@
+server:
+  port: 9990
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true  # 是否启动自动识别nacos服务
+
+    # 配置nacos
+    nacos:
+        discovery:
+          server-addr: 127.0.0.1:8847
+          username: nacos
+          password: nacos

@@ -25,7 +25,6 @@ public class CustomRule extends AbstractLoadBalancerRule {
         int random = ThreadLocalRandom.current().nextInt(reachableServers.size());
         Server server = reachableServers.get(random);
 
-
         return server;
     }
 }
