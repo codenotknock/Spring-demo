@@ -70,7 +70,6 @@
             <artifactId>swagger-annotations</artifactId>
             <version>1.6.2</version>
         </dependency>
-    </dependencies>
 
         <dependency>
             <groupId>net.bytebuddy</groupId>
@@ -229,3 +228,4 @@
         </plugins>
     </build>
 
+</project>
