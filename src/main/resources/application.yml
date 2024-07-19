@@ -1,7 +1,90 @@
-server:
-  port: 9999
 
 logging:
   level:
-    org.codenotknock: DEBUG
-    org.springframework: DEBUG
+    org:
+      codenotknock: DEBUG
+
+
+# 日期
+date: 1985/1/1
+# 对象
+student:
+  firstName: fu
+  name: xiaofu
+  age: 21
+
+# 单行写法
+student2: {first-name: fu, name: xiaofu, age: 21 }
+
+# 数组
+animal:
+  - dog
+  - cat
+  - bride
+aniimal2: {dog, cat, bride}
+
+# list集合
+my-list:
+  - xiao
+  - fu
+  - xue
+  - Java
+myList2: {xiao, fu, xue, Java}
+
+students:
+  - name: xiaofu
+    age: 21
+  - name: xiaomi
+    age: 22
+  - {name: xiaofu2, age: 21}
+
+# 占位符赋值${key:defaultValue} 如果 myPort 无值，port 默认为 8080
+server:
+  port: ${myPort:8080}
+
+myPort: 9999
+
+
+# 自定义静态资源访问路径  静态资源url前必须有/res才能访问到static目录中的文件
+spring:
+  mvc:
+    static-path-pattern: /res/**
+  web:
+    resources:
+      static-locations:  # 修改静态资源存放路径
+        - classpath:/static1/
+        - classpath:/static2/
+        - classpath:/static3/
+
+    # spring整合mybatis
+    # 数据库相关配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mySchemeTest?characterEncoding=utf-8&&serverTimezone=Asia\Shanghai
+    username: root
+    password: 123456
+  aop:
+    proxy-target-class: false  # 切换动态代理的方式为 jdk动态代理；默认为true cglib动态代理
+    auto: false  # false 关闭 aop 功能，默认是true 开启aop功能的
+  redis:
+    port: 6379
+    host: 127.0.0.1
+  profiles:
+    active: dev, mysql  # 指定配置
+  boot:
+    admin:
+      client:
+        url: http://localhost:9999
+
+# mybatis 相关配置
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml  # mapper 映射文件路径
+  type-aliases-package: com.codenotknock.domain # 配置包下的类有默认别名
+
+# 监控配置
+management:
+  endpoints:
+    enabled-by-default: true  # 启用所有端点
+    web:
+      exposure:
+        include: "*"  # 暴露所有端点
