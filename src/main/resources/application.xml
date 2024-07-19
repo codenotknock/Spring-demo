@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    依赖注入方式：1.构造器注入 2.set方法注入 3.字段注入 4.接口注入-->
+    <!--    注意：注入的是具体实现类——从接口注入-->
+    <bean id="messageService" class="org.codenotknock.service.impl.MessageServiceImpl"/>
+</beans>
